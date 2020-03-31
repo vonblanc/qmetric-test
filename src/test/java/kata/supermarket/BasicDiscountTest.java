@@ -12,30 +12,31 @@ import kata.supermarket.GroupedItem.GroupedType;
 
 public class BasicDiscountTest {
 
+	/**
+	 * 2 4 1 discount object
+	 */
 	BasicDiscounts discount; 
 	
 	
-	
+	/**
+	 * 2 4 1 discount object
+	 */
 	@Test
 	public void testBasicTestDiscounts()
 	{
 		discount= new BasicDiscounts(fetchGroupedItems1());
-	    discount.applyTwoFor1Discount();
 		assertEquals(new BigDecimal("0.00"),discount.getDiscountedPrice());
 		
 		discount= new BasicDiscounts(fetchGroupedItems1(), new Product(new BigDecimal("50.5")).oneOf());
-	    discount.applyTwoFor1Discount();
 		assertEquals(new BigDecimal("50.50"),discount.getDiscountedPrice());
 		
 		discount= new BasicDiscounts(fetchGroupedItems1(), new WeighedProduct(new BigDecimal("20.5")).weighing(new BigDecimal("5")));
-	    discount.applyTwoFor1Discount();
 		assertEquals(new BigDecimal("102.50"),discount.getDiscountedPrice());
 
 		discount= new BasicDiscounts(fetchGroupedItems1(), 
 			new WeighedProduct(new BigDecimal("20.5")).weighing(new BigDecimal("5")),
 			new WeighedProduct(new BigDecimal("20.5")).weighing(new BigDecimal("5"))
 				);
-	    discount.applyTwoFor1Discount();
 		assertEquals(new BigDecimal("102.50"),discount.getDiscountedPrice());
 
 

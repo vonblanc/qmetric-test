@@ -10,6 +10,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Discount implementation
+ * @author Richard
+ *
+ */
 public class BasicDiscounts implements Discounts {
 
 	private int numberOfItems=0;
@@ -74,7 +79,7 @@ public class BasicDiscounts implements Discounts {
 	}
 	@Override
 	public BigDecimal getDiscountedPrice() {
-
+		applyTwoFor1Discount();
 		return bigIntegerDiscountedPrice.setScale(2, RoundingMode.HALF_UP);
 	}
 

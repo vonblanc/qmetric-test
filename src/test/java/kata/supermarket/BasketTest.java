@@ -1,5 +1,6 @@
 package kata.supermarket;
 
+import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -8,11 +9,13 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BasketTest {
+public class BasketTest {
 
     @DisplayName("basket provides its total value when containing...")
     @MethodSource
@@ -78,5 +81,32 @@ class BasketTest {
 
     private static Item twoHundredGramsOfPickAndMix() {
         return aKiloOfPickAndMix().weighing(new BigDecimal(".2"));
+    }
+    
+    
+    
+    /**
+     * Quick basket test with discount
+     * Total 1.25 + 1.25 + 0.6
+     * 
+     * Repeated items twoFiftyGramsOfAmericanSweets
+     *  - 1.25
+     *  = 1.85
+     */
+    @Test
+    public void testBasket()
+    {  
+    	
+    	List<Item> itemList= new LinkedList<Item>(
+    			Arrays.asList(twoFiftyGramsOfAmericanSweets()
+    			,twoHundredGramsOfPickAndMix(), twoFiftyGramsOfAmericanSweets()
+    			
+    			));
+    	
+    	final Basket basket = new Basket();
+    	itemList.forEach(basket::add);
+    	basket.addDiscount();
+    	assertEquals(new BigDecimal("1.85"),basket.total());
+    	
     }
 }

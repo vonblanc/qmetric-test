@@ -28,10 +28,10 @@ public class Basket {
      */
     public void addDiscount()
     {
-    	//apply 2 4 1 discount
+    	//add 2 4 1 discount
     	if(items != null ||  !items.isEmpty())
     	{
-        	this.discount= new BasicDiscounts((Item[])items.toArray());
+        	this.discount= new BasicDiscounts((Item[])items.toArray(new Item[0]));
 
     	}
     }
@@ -65,7 +65,8 @@ public class Basket {
          *  which provides that functionality.
          */
         private BigDecimal discounts() {
-            return BigDecimal.ZERO;
+            
+        	return discount.getDiscountedPrice();
         }
 
         private BigDecimal calculate() {

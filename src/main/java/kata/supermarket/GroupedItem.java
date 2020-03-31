@@ -5,7 +5,11 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/**
+ * Enhancement to group Items
+ * @author Richard
+ *
+ */
 public class GroupedItem implements Item{
 
 	public enum GroupedType{
