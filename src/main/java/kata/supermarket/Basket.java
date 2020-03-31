@@ -8,6 +8,11 @@ import java.util.List;
 
 public class Basket {
     private final List<Item> items;
+    
+    /**
+     * introduced discount class add on demand
+     */
+    private Discounts discount;
 
     public Basket() {
         this.items = new ArrayList<>();
@@ -16,7 +21,20 @@ public class Basket {
     public void add(final Item item) {
         this.items.add(item);
     }
+      
+    /**
+     * point basket to discount
+     * @param discount
+     */
+    public void addDiscount()
+    {
+    	//apply 2 4 1 discount
+    	if(items != null ||  !items.isEmpty())
+    	{
+        	this.discount= new BasicDiscounts((Item[])items.toArray());
 
+    	}
+    }
     List<Item> items() {
         return Collections.unmodifiableList(items);
     }

@@ -2,6 +2,7 @@ package kata.supermarket;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -57,7 +58,7 @@ public class BasicDiscounts implements Discounts {
 		{
 			if(valueSet.contains(item.price()))
 				{
-				  totalPrice=totalPrice.subtract(item.price());
+				bigIntegerDiscountedPrice=bigIntegerDiscountedPrice.add(item.price());
 				  valueSet.remove(item.price());
 				}
 			else {
@@ -68,11 +69,13 @@ public class BasicDiscounts implements Discounts {
 		}
 		
 		
+	
+		
 	}
 	@Override
 	public BigDecimal getDiscountedPrice() {
 
-		return totalPrice;
+		return bigIntegerDiscountedPrice.setScale(2, RoundingMode.HALF_UP);
 	}
 
 }
