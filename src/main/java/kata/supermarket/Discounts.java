@@ -7,6 +7,6 @@ public interface Discounts {
 	
 	
 	
-public BigDecimal getDiscountedPrice();
+ BigDecimal getDiscountedPrice();
 
 }
